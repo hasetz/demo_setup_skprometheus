@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/root/.cache pip install -r requirements.txt
 
 COPY . .
 
-RUN pip install .
+RUN pip install -e .
 
-CMD ["uvicorn", "scikitProm.app:app", "--host", "0.0.0.0"]
+CMD ["uvicorn", "scikitProm.app:app", "--host", "0.0.0.0", "--reload"]
 #CMD ["bash"]
