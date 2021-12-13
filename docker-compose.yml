@@ -11,6 +11,9 @@ services:
 #      NAMES_API__REDIS_HOST: redis
   prometheus:
     image: prom/prometheus
+    command:
+    - '--web.enable-admin-api'
+    - '--config.file=/etc/prometheus/prometheus.yml'
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
