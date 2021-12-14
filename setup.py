@@ -5,6 +5,7 @@ base_requirements = [
     "uvicorn>=0.15.0",
     "prometheus-client>=0.12.0",
     "scikit-learn>=1.0.1",
+    "loguru>=0.5.3"
 ]
 
 dev_requirements = {

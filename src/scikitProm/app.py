@@ -7,11 +7,24 @@ import time
 import random
 import pickle
 from scikitProm.utils import get_project_root
+from sklearn import datasets
+from scikitProm.model_utils import train
+from scikitProm.models.decisionTree import model
+from loguru import logger
+import skprometheus
+
+# Traing model on each start of application.
+# Temporary solution for testing Scikit-prometheus package
+logger.info("Training new iris model.")
+iris = datasets.load_iris()
+iris_model = train(model, iris['data'], iris['target'])
 
 
+logger.info("Starting API.")
 app = FastAPI()
-model_path = get_project_root() / "models" / "decision_tree_0.1.pkl"
-iris_model = pickle.load(open(model_path, 'rb'))
+
+# model_path = get_project_root() / "models" / "decision_tree_0.1.pkl"
+# iris_model = pickle.load(open(model_path, 'rb'))
 
 request_count = Counter('requests_index', 'Amount of requests for index page.')
 request_latency = Histogram('Latency_hist', 'Histogram for tracking latency.')
